@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+        
+    <nav>
+        <h1>My Store</h1>
+        <div class="filters-container">
+            <form action="" id="filter-form">
+                <input type="search" name="search" id="searchInput" placeholder="search for products" >
+                 <input type="number" name="min-price" id="minPrice" placeholder="Minimum price">
+                 <input type="number" name="max-price" id="maxPrice" placeholder="Maximum price"> 
+                 <select id="categoryFilter">  
+                    <option value="all">All Categories</option>  
+                    <option value="men's clothing">men's clothing</option>  
+                    <option value="jewelery">jewelery</option>  
+                    <option value="women's clothing">women's clothing</option>  
+                    <option value="electronics">electronics</option>  
+                </select>                
+                 <input type="submit" value="Apply Filters" name="submit" class="btn btn-success">
+            </form>
+            <div class="shoping-cart">
+                <h4>Shopping-Cart</h3>
+                 <ul id="shopping-list">
+                 </ul>   
+                <p>Total Quantity: <span id="total-quantity">0</span></p>
+                <p>Total Price:$  <span id="total-price">0</span></p>
+            </div>
+        </div>
+    
+    </nav>
+    <main>
+         <div class="products-container" id="product-content"></div>
+    </main>
+
+
+    <footer>
+        <div class="pages-container">
+            <button class="btn btn-secondary" id="prev-page">Previous</button>
+            <ul class="page-list"></ul>
+            <button class="btn btn-secondary" id="next-page">Next</button>
+        </div>
+    </footer>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
