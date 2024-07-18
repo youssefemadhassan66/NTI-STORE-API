@@ -24,8 +24,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             let numberOfPages = 1;
             let page_number_list = document.querySelector(".page-list");
             let currentPage_number= 1;
-            let previousPage = document.getElementById("previous-page");
-            let nextPage = document.getElementById("next-page");
+            
             
             /*Api  Fetching Data*/    
         
@@ -67,7 +66,6 @@ document.addEventListener('DOMContentLoaded', async function() {
                     <div class="Product-add-cart">
                     <button class="add-to-cart btn btn-primary" id="${Product.id}">Add to Cart</button>
                     <button class="view-details btn btn-primary" id="${Product.id}">View Details</button>
-
                     </div>
                     `
                 });
@@ -99,7 +97,6 @@ document.addEventListener('DOMContentLoaded', async function() {
                 });
             }
 
-
             /* Display  1 product*/
 
             let viewDetails = document.querySelectorAll(".view-details");
@@ -117,7 +114,6 @@ document.addEventListener('DOMContentLoaded', async function() {
                     <p>Price$ <span id="product-price">${item.price}</spn></p> 
                     <p>${item.description}</p>
                     <p>${item.category}</p>
-
                     <div class="Product-add-cart">
                     <button class="add-to-cart btn btn-primary" id="${item.id}">Add to Cart</button>
                     <p> Rating : ${item.rating.rate}</P>
@@ -138,15 +134,15 @@ document.addEventListener('DOMContentLoaded', async function() {
                 let minPriceNumber = minPrice ? parseFloat(minPrice) : 0;
                 let maxPriceNumber = maxPrice ? parseFloat(maxPrice) : 2000000000;
 
-                let filtered_Products = products_array.filter(product => {
-                    let matchesTitle =  product.title.toLowerCase().includes(title);
-                    let matchesMinPrice = product.price >= minPriceNumber;
-                    let matchesMaxPrice = product.price <= maxPriceNumber;
-                    let matchesCategory =  product.category.toLowerCase().includes(selectedCategory);
+                    let filtered_Products   = products_array.filter(product => {
+                    let isTitle    =  product.title.toLowerCase().includes(title);
+                    let isMinPrice = product.price >= minPriceNumber;
+                    let isMaxPrice = product.price <= maxPriceNumber;
+                    let isCategory =  product.category.toLowerCase().includes(selectedCategory);
                     if(selectedCategory == 'all'){
-                        return matchesTitle && matchesMinPrice && matchesMaxPrice;
+                        return isTitle && isMinPrice && isMaxPrice;
                     }
-                    return matchesTitle && matchesMinPrice && matchesMaxPrice && matchesCategory;
+                    return isTitle && isMinPrice && isMaxPrice && isCategory;
                 });
 
                 productsDisplay(filtered_Products);
@@ -184,10 +180,10 @@ document.addEventListener('DOMContentLoaded', async function() {
                 cart_price.innerHTML = `${cart_price_sum.toFixed(2)}`;
                 cartQuantity.innerHTML = `${cart.length}`;   
             
-                addRemoveItemEventListeners();
+                Remove_Item();
             }
             
-            function addRemoveItemEventListeners() {
+            function Remove_Item() {
                 const removeItemBtn = document.querySelectorAll('.remove-item');
                 removeItemBtn.forEach(button => {
                     button.addEventListener('click', function(event) {
